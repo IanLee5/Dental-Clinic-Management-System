@@ -11,6 +11,7 @@ CREATE TABLE staff (
     PRIMARY KEY(staff_id)
 );
 
+USE dental_mgmt;
 CREATE TABLE patient (
 	patient_id int(20) NOT NULL,
     patient_loginid varchar(20) NOT NULL,
@@ -34,5 +35,13 @@ USE dental_mgmt;
 ALTER TABLE staff AUTO_INCREMENT=10000;
 
 USE dental_mgmt;
+ALTER TABLE patient AUTO_INCREMENT=100;
+
+
+USE dental_mgmt;
 INSERT INTO staff VALUES
-('10001', 'S10001', '1234', 'Jamie_Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1')
+('10001', 'S10001', '1234', 'Jamie_Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1');
+
+USE dental_mgmt;
+INSERT INTO patient VALUES
+('101', 'P101', '1234', 'John Holland', 'Male', ' 73, Jalan SS 15/5a, SS 15, 47500 Subang Jaya, Selangor', '0129801789', 'j_holland@gmail.com');
