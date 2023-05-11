@@ -21,7 +21,7 @@
   </head>
   
   <body>
-  <img src="logo.png" alt="Our dentistry logo">
+  <img src="images/logo.png" alt="Our dentistry logo">
   <header> 
 	<h1> Register new patient</h1>
 	</header>
