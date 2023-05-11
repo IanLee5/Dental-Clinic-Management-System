@@ -6,12 +6,22 @@
   <meta name="keywords" content="create" />
   <meta name="author" content="Lim Kwangmin"  />
   <title>Register new patient</title>
-  
+  <style>
+	body {background-color: grey;}
+	h1   {color: rebeccapurple;}
+	h3   {color: lightseagreen; text-decoration: underline;}
+	label   {color: gold;}
+	p    {color: lightgreen;}
+	legend   {font-weight: bold;}
+	img {float: right; height:200px; width:200px;}
+	
+</style>
 
 
   </head>
   
   <body>
+  <img src="logo.png" alt="Our dentistry logo">
   <header> 
 	<h1> Register new patient</h1>
 	</header>
