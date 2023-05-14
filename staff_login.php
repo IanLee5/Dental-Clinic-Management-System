@@ -1,3 +1,26 @@
+<?php
+	include("setup.php");
+	session_start();
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+		$loginuser = mysqli_real_escape_string($conn, $_POST['userid']);
+		$loginpass = mysqli_real_escape_string($conn, $_POST['password']);
+		
+		$sql = "SELECT * FROM staff WHERE staff_loginid = '$loginuser' AND staff_password = '$loginpass'";
+		$result = mysqli_query($conn, $sql);
+		$user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		
+		$count = mysqli_num_rows($result);
+		
+		if ($count == 1) {
+			$_SESSION['login_staff'] = $loginuser;
+			header("location: staff_dashboard.php");
+		} else {
+			header("ID or Password is invalid");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
