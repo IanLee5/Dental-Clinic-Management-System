@@ -1,64 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" >
-  <meta name="description" content="Create new staff" />
-  <meta name="keywords" content="create" />
-  <meta name="author" content="Lim Kwangmin"  />
-  <title>Register new staff</title>
-  <style>
-	body {font-family: Verdana, Arial sans-serif;
-            background-color: #f2f2f2;}
-			
-	h1   {margin-top: 50px;
-			font-weight: bold;}
-			
-	h3   {text-decoration: underline;
-			color: #333;}
-	
-	label   {display: block;
-            margin-bottom: 10px;
-            font-weight: bold;}
-	
-	legend   {font-weight: bold;
-				font-family: Verdana, Arial sans-serif;
-				color: #666;}
-	
-	img {float: right; height:150px; width:150px;}
-	
-	fieldset {border: 3px solid #666;
-  border-right: 3px solid #333;
-  border-bottom: 3px solid #333;}
-  
-  div {border: 2px solid #666;
-  border-right: 2px solid #333;
-  border-bottom: 2px solid #333;}
-	
-</style>
-
-
-  </head>
-  
-  <body>
-  <img src="images/logo.png" alt="Our dentistry logo">
-  <div style="width:8%">
-  <h3>Menu</h3>
-  <div><a href="staff_dashboard.php">Dashboard</a></div>
-  <div><a href="create_new_staff.php">Register New Staff</a></div>
-  <div><a href="Logout.php">Logout</a></div>
-</div>
-
-<div style="margin-left:10%">
-  <header> 
-	<h1> Register new staff</h1>
-	</header>
-	
 <?php	
 	include('setup.php');
-	session_start();
 
-	if(isset($_POST['submit'])) {
-		$sql = ("INSERT INTO staff (
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+		$sql = "INSERT INTO staff (
+			staff_id,
 			staff_loginid, 
 			staff_password, 
 			staff_name, 
@@ -68,16 +17,90 @@
 			staff_status
 		) VALUES (
 			'" . $_POST['staffID'] . "',
+			'" . $_POST['staff_loginID'] . "',
 			'" . $_POST['staff_password'] . "',
 			'" . $_POST['staff_name'] . "',
 			'" . $_POST['gender'] . "',
 			'" . $_POST['phone'] . "',
 			'" . $_POST['email'] . "',
-			'" . $_POST['status'] . "',
-		)");
+			1
+		)";
+
+		if (mysqli_query($conn, $sql)) {
+			echo "Successfully Registered User";
+		} else {
+			echo "Error";
+		}
 	}
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <meta name="description" content="Create new staff" />
+  <meta name="keywords" content="create" />
+  <meta name="author" content="Lim Kwangmin"  />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Register new staff</title>
+  <style>
+	body {
+		font-family: Verdana, Arial sans-serif;
+        background-color: #f2f2f2;
+	}
+			
+	h1   {
+		margin-top: 50px;
+		font-weight: bold;
+	}
+			
+	h3   {
+		text-decoration: underline;
+		color: #333;
+	}
+	
+	label   {
+		display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+	}
+	
+	legend   {
+			font-weight: bold;
+			font-family: Verdana, Arial sans-serif;
+			color: #666;
+	}
+	
+	img {
+		float: right; 
+		height:150px; 
+		width:150px;
+	}
+	
+	fieldset {
+		border: 3px solid #666;
+  		border-right: 3px solid #333;
+  		border-bottom: 3px solid #333;
+	}
+	
+</style>
+
+  </head>
+  
+  <body>
+  <img src="images/logo.png" alt="Our dentistry logo">
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
+      <h3 class="w3-bar-item" class="w3-bar-item w3-button"> Menu </h3> 
+		<a href="staff_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+  		<a href="create_new_staff.php" class="w3-bar-item w3-button">Register New Staff</a>
+		<a href="create_new_patient.php" class="w3-bar-item w3-button">Register New Patient</a>
+  		<a href="Logout.php" class="w3-bar-item w3-button">Logout</a>
+  </div>
+	<div style="margin-left:12%">
+
+  <header> 
+	<h1> Register new staff</h1>
+  </header>
 
 <form action="" method="post">
 	<h3>Register New staff</h3>
@@ -85,6 +108,9 @@
 		<legend>Staff Login ID</legend>
 		<p><label for="staffID">Staff ID: </label>
 			<input type="text" name ="staffID" id="staffID" maxlength="10" required="required"/>
+		</p>
+		<p><label for="staff_loginID">Staff Login ID: </label>
+			<input type="text" name ="staff_loginID" id="staff_loginID" maxlength="10" required="required"/>
 		</p>
 		<p><label for="staff_password">Password: </label>
 			<input type="text" name ="staff_password" id="staff_password" maxlength="20" required="required"/>
@@ -152,6 +178,5 @@
 	<input type= "submit" value="Register" />
 	<input type= "reset" value="Reset Form"/>
 </form>
-</div>
 </body>
 </html>
