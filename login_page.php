@@ -5,8 +5,14 @@
 	<meta name="description" content="Create new staff" />
 	<meta name="keywords" content="create" />
 	<meta name="author" content=" "  />
+    <img src="images/logo.png" alt="Our dentistry logo">
 	<title>Register new staff</title>
-		    <style>
+	<style>
+        img {
+            float: center;
+            height:150px; 
+            width:150px;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -19,7 +25,7 @@
         }
         
         form {
-            margin-top: 50px;
+            margin-top: 20px;
             display: inline-block;
             background-color: #fff;
             padding: 20px;

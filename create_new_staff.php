@@ -1,3 +1,39 @@
+<?php	
+	include('setup.php');
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+		$sql = "INSERT INTO staff (
+			staff_id,
+			staff_loginid, 
+			staff_password, 
+			staff_name, 
+			staff_gender, 
+			staff_phone, 
+			staff_email, 
+			staff_status
+		) VALUES (
+			NULL,
+			'" . $_POST['staffID'] . "',
+			'" . $_POST['staff_password'] . "',
+			'" . $_POST['staff_name'] . "',
+			'" . $_POST['gender'] . "',
+			'" . $_POST['phone'] . "',
+			'" . $_POST['email'] . "',
+			1
+		)";
+
+		if (mysqli_query($conn, $sql)) {
+			echo "Successfully Registered User";
+		} else {
+			echo "Error";
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,33 +59,7 @@
   <img src="images/logo.png" alt="Our dentistry logo">
   <header> 
 	<h1> Register new staff</h1>
-	</header>
-	
-<?php	
-	include('setup.php');
-	session_start();
-
-	if(isset($_POST['submit'])) {
-		$sql = ("INSERT INTO staff (
-			staff_loginid, 
-			staff_password, 
-			staff_name, 
-			staff_gender, 
-			staff_phone, 
-			staff_email, 
-			staff_status
-		) VALUES (
-			'" . $_POST['staffID'] . "',
-			'" . $_POST['staff_password'] . "',
-			'" . $_POST['staff_name'] . "',
-			'" . $_POST['gender'] . "',
-			'" . $_POST['phone'] . "',
-			'" . $_POST['email'] . "',
-			'" . $_POST['status'] . "',
-		)");
-	}
-?>
-
+  </header>
 
 <form action="" method="post">
 	<h3>Register New staff</h3>

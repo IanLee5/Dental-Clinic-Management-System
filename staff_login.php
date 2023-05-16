@@ -26,8 +26,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img src="images/logo.png" alt="Our dentistry logo">
     <title>Login</title>
     <style>
+        img {
+            float: center;
+            height:150px; 
+            width:150px;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -40,7 +47,7 @@
         }
         
         form {
-            margin-top: 50px;
+            margin-top: 20px;
             display: inline-block;
             background-color: #fff;
             padding: 20px;
