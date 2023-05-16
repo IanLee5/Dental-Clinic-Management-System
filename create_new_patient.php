@@ -139,5 +139,6 @@
 	<input type= "submit" value="Register" />
 	<input type= "reset" value="Reset Form"/>
 </form>
+</div>
 </body>
 </html>
