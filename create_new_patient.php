@@ -7,32 +7,59 @@
   <meta name="author" content="Lim Kwangmin"  />
   <title>Register new patient</title>
   <style>
-	body {background-color: grey;}
-	h1   {color: rebeccapurple;}
-	h3   {color: lightseagreen; text-decoration: underline;}
-	label   {color: gold;}
-	p    {color: lightgreen;}
-	legend   {font-weight: bold;}
-	img {float: right; height:200px; width:200px;}
+	body {font-family: Verdana, Arial sans-serif;
+            background-color: #f2f2f2;}
+			
+	h1   {margin-top: 50px;
+			font-weight: bold;}
+			
+	h3   {text-decoration: underline;
+			color: #333;}
 	
+	label   {display: block;
+            margin-bottom: 10px;
+            font-weight: bold;}
+	
+	legend   {font-weight: bold;
+				font-family: Verdana, Arial sans-serif;
+				color: #666;}
+	
+	img {float: right; height:150px; width:150px;}
+	
+	fieldset {border: 3px solid #666;
+  border-right: 3px solid #333;
+  border-bottom: 3px solid #333;}
+  
+  div {border: 2px solid #666;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;}
+  	
 </style>
 
 
   </head>
   
   <body>
+  
   <img src="images/logo.png" alt="Our dentistry logo">
-  <header> 
+  
+ <div style="width:8%">
+  <h3>Menu</h3>
+  <div><a href="patient_dashboard.php">Dashboard</a></div>
+  <div><a href="create_new_patient.php">Register New Patient</a></div>
+  <div><a href="Logout.php">Logout</a></div>
+</div>
+
+<div style="margin-left:10%">
+  <header>  
 	<h1> Register new patient</h1>
 	</header>
-	
 <?php	
 	
 ?>
 
-
-	
 	<h3>Register New Patient</h3>
+
 	<fieldset>
 		<legend>Patient Number</legend>
 		<p><label for="PN"></label>
