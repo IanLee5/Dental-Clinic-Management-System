@@ -1,39 +1,3 @@
-<?php	
-	include('setup.php');
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$sql = "INSERT INTO staff (
-			staff_id,
-			staff_loginid, 
-			staff_password, 
-			staff_name, 
-			staff_gender, 
-			staff_phone, 
-			staff_email, 
-			staff_status
-		) VALUES (
-			NULL,
-			'" . $_POST['staffID'] . "',
-			'" . $_POST['staff_password'] . "',
-			'" . $_POST['staff_name'] . "',
-			'" . $_POST['gender'] . "',
-			'" . $_POST['phone'] . "',
-			'" . $_POST['email'] . "',
-			1
-		)";
-
-		if (mysqli_query($conn, $sql)) {
-			echo "Successfully Registered User";
-		} else {
-			echo "Error";
-		}
-	}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,23 +7,77 @@
   <meta name="author" content="Lim Kwangmin"  />
   <title>Register new staff</title>
   <style>
-	body {background-color: grey;}
-	h1   {color: rebeccapurple;}
-	h3   {color: lightseagreen; text-decoration: underline;}
-	label   {color: gold;}
-	p    {color: lightgreen;}
-	legend   {font-weight: bold;}
-	img {float: right; height:200px; width:200px;}
+	body {font-family: Verdana, Arial sans-serif;
+            background-color: #f2f2f2;}
+			
+	h1   {margin-top: 50px;
+			font-weight: bold;}
+			
+	h3   {text-decoration: underline;
+			color: #333;}
+	
+	label   {display: block;
+            margin-bottom: 10px;
+            font-weight: bold;}
+	
+	legend   {font-weight: bold;
+				font-family: Verdana, Arial sans-serif;
+				color: #666;}
+	
+	img {float: right; height:150px; width:150px;}
+	
+	fieldset {border: 3px solid #666;
+  border-right: 3px solid #333;
+  border-bottom: 3px solid #333;}
+  
+  div {border: 2px solid #666;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;}
 	
 </style>
+
 
   </head>
   
   <body>
   <img src="images/logo.png" alt="Our dentistry logo">
+  <div style="width:8%">
+  <h3>Menu</h3>
+  <div><a href="staff_dashboard.php">Dashboard</a></div>
+  <div><a href="create_new_staff.php">Register New Staff</a></div>
+  <div><a href="Logout.php">Logout</a></div>
+</div>
+
+<div style="margin-left:10%">
   <header> 
 	<h1> Register new staff</h1>
-  </header>
+	</header>
+	
+<?php	
+	include('setup.php');
+	session_start();
+
+	if(isset($_POST['submit'])) {
+		$sql = ("INSERT INTO staff (
+			staff_loginid, 
+			staff_password, 
+			staff_name, 
+			staff_gender, 
+			staff_phone, 
+			staff_email, 
+			staff_status
+		) VALUES (
+			'" . $_POST['staffID'] . "',
+			'" . $_POST['staff_password'] . "',
+			'" . $_POST['staff_name'] . "',
+			'" . $_POST['gender'] . "',
+			'" . $_POST['phone'] . "',
+			'" . $_POST['email'] . "',
+			'" . $_POST['status'] . "',
+		)");
+	}
+?>
+
 
 <form action="" method="post">
 	<h3>Register New staff</h3>
@@ -134,5 +152,6 @@
 	<input type= "submit" value="Register" />
 	<input type= "reset" value="Reset Form"/>
 </form>
+</div>
 </body>
 </html>
