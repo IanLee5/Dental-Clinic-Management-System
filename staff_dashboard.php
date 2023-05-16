@@ -8,31 +8,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            width: 300px;
+            margin-left: 50px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .menu {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .menu a:hover {
+            background-color: #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome back!</h1>
-    <h1> Select new to create </h1>
-	
-	<?php
-		if (array_key_exists('new_staff', $_POST)) {
-			new_staff();
-		} else if (array_key_exists('new_patient', $_POST)) {
-			new_patient();
-		}
-		function new_staff() {
-			header("location: create_new_staff.php");
-		}
-		function new_patient() {
-			header("location: create_new_patient.php");
-		}
-	?>
-	
-	<form method="post">
-		<input type="submit" name="new_staff" class="button" value="Register a staff" />
-		<input type="submit" name="new_patient" class="button" value="Register a patient" />
-	</form>
-    <p>Test</p>
-	<h2><a href = "logout.php">Sign Out</a></h2>
-    </form>
+    <div class="container">
+        <div class="menu">
+            <a href="register.php">Register</a>
+            <a href="create_appointment.php">Create Appointment</a>
+            <a href="display_appointment.php">Display Appointment</a>
+            <a href="logout.php">Logout</a>
+        </div>
+    </div>
 </body>
 </html>
