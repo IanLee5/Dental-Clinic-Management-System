@@ -6,7 +6,7 @@
 	}
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$sql = "INSERT INTO staff (
+		tmp_query("INSERT INTO staff (
 			staff_id,
 			staff_loginid, 
 			staff_password, 
@@ -14,23 +14,29 @@
 			staff_gender, 
 			staff_phone, 
 			staff_email, 
-			staff_status
+			staff_status,
+			staff_role
 		) VALUES (
 			'" . $_POST['staffID'] . "',
 			'" . $_POST['staff_loginID'] . "',
-			'" . $_POST['staff_password'] . "',
+			'" . md5($_POST['staff_password']) . "',
 			'" . $_POST['staff_name'] . "',
 			'" . $_POST['gender'] . "',
 			'" . $_POST['phone'] . "',
 			'" . $_POST['email'] . "',
-			1
-		)";
+			1,
+			'" . $_POST['role'] . "'
+		)");
 
-		if (mysqli_query($conn, $sql)) {
-			echo "Successfully Registered User";
-		} else {
-			echo "Error";
-		}
+	// 	if (mysqli_query($conn, $sql)) {
+	// 		echo "Successfully Registered User<br>";
+	// 	} else {
+	// 		echo "Error<br>";
+	// 	}
+	// }
+		echo alert("Successfully Registered User");
+	} else {
+    	echo alert("Error");
 	}
 ?>
 
@@ -92,6 +98,7 @@
   <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
       <h3 class="w3-bar-item" class="w3-bar-item w3-button"> Menu </h3> 
 		<a href="staff_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+		<a href="display_user.php" class="w3-bar-item w3-button">Members</a>
   		<a href="create_new_staff.php" class="w3-bar-item w3-button">Register New Staff</a>
 		<a href="create_new_patient.php" class="w3-bar-item w3-button">Register New Patient</a>
   		<a href="Logout.php" class="w3-bar-item w3-button">Logout</a>
@@ -125,52 +132,40 @@
 		<p><label for="dob">Date of Birth: </label>
 			<input type="date" name="dob" id="dob" placeholder="dd-mm-yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" maxlength="10"/>
 		</p>
-	
-	</fieldset>
-	
-	<fieldset>
-			<legend>Gender</legend>
-			<p><label for="male">Male</label> 
-				<input type="radio" id="male" name="gender" value="male" checked="checked"/>
-			</p>
-			<p><label for="female">Female</label> 
-				<input type="radio" id="female" name="gender" value="female"/>
-			</p>
-		</fieldset>
-		
-	<fieldset>
-			<legend>Address</legend>	
-			<p><label for="address"> Address: </label>
-				<textarea id="address" name="address" rows="5" cols="40" placeholder="Max of  40 characters"></textarea>
-			</p>
-	
-			
-	</fieldset>
-	
-	<fieldset>
-		<legend>Contact Information</legend>
-			<p><label for="email">Email: </label> 
-				<input type="email" name= "email" id="email" required="required"/>
-			</p>
-			<p><label for="phone">Phone Number</label>
-				<input type="text" name ="phone" id="phone" maxlength="12" pattern=".{8,12}" required="required"/>
-			</p>
+		<p><label for="male">Male</label> 
+			<input type="radio" id="male" name="gender" value="male" checked="checked"/>
+		</p>
+		<p><label for="female">Female</label> 
+			<input type="radio" id="female" name="gender" value="female"/>
+		</p>	
+		<p><label for="address"> Address: </label>
+			<textarea id="address" name="address" rows="5" cols="40" placeholder="Max of  40 characters"></textarea>
+		</p>
+		<p><label for="email">Email: </label> 
+			<input type="email" name= "email" id="email" required="required"/>
+		</p>
+		<p><label for="phone">Phone Number</label>
+			<input type="text" name ="phone" id="phone" maxlength="12" pattern=".{8,12}" required="required"/>
+		</p>
 	</fieldset>
 	
 	<fieldset>
 		<legend>Staff info</legend>			
-			<p><label for="StaffPos">Staff Position: </label>
-				<select name="StaffPos" id="StaffPos" required="required">
+			<p><label for="role">Staff Role: </label>
+			<p> 1. Reception </p>
+			<p> 2. Nurse </p>
+			<p> 3. Doctor </p>
+				<select name="role" id="role" required="required">
 					<option value="" id="none">Please Select </option>
-					<option value="Dr" id="Dr">Doctor</option>
-					<option value="Ns" id="Ns">Nurse</option>
-					<option value="Rc" id="Rc">Reception</option>
+					<option value="1" id="Rc">1</option>
+					<option value="2" id="Ns">2</option>
+					<option value="3" id="Dr">3</option>
 			</select>
 			</p>
 			
-			<p><label for="status"> Staff Role: </label>
+			<!-- <p><label for="status"> Staff Status: </label>
 				<textarea id="status" name="status" rows="5" cols="40" placeholder="Staff's role"></textarea>
-			</p>
+			</p> -->
 			
 			
 	</fieldset>

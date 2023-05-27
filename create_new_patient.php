@@ -6,7 +6,7 @@
 	}
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$sql = "INSERT INTO patient (
+		tmp_query("INSERT INTO patient (
 			patient_id,
 			patient_loginid, 
 			patient_password, 
@@ -18,19 +18,22 @@
 		) VALUES (
 			'" . $_POST['patientID'] . "',
 			'" . $_POST['patient_loginID'] . "',
-			'" . $_POST['patient_password'] . "',
+			'" . md5($_POST['patient_password']) . "',
 			'" . $_POST['patient_name'] . "',
 			'" . $_POST['gender'] . "',
 			'" . $_POST['address'] . "',
 			'" . $_POST['phone'] . "',
 			'" . $_POST['email'] . "'
-		)";
+		)");
 
-		if (mysqli_query($conn, $sql)) {
-			echo "Successfully Registered User";
-		} else {
-			echo "Error";
-		}
+		// if (mysqli_query($conn, $sql)) {
+		// 	echo "Successfully Registered User<br>";
+		// } else {
+		// 	echo "Error<br>";
+		// }
+		echo alert("Successfully Registered User");
+	} else {
+    	echo alert("Error");
 	}
 ?>
 

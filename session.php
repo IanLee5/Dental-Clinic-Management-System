@@ -1,6 +1,5 @@
 <?php
    include('setup.php');
-   session_start();
      
    if(isset($_SESSION['login_staff'])) {
       $staff_check = $_SESSION['login_staff'];
@@ -16,4 +15,10 @@
       header("location:login_page.php");
       die();
    }
+
+   // if (isset($_SESSION['login_staff'])) {
+   //    $staff_check = $_SESSION['login_staff'];
+   //    $infoRow = tmp_get_object(tmp_query("SELECT * FROM staff WHERE staff_userid = '" . $staff_check . "'"));
+
+   // }
 ?>

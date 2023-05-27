@@ -1,12 +1,11 @@
 <?php
 	include("setup.php");
-	session_start();
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$loginuser = mysqli_real_escape_string($conn, $_POST['userid']);
 		$loginpass = mysqli_real_escape_string($conn, $_POST['password']);
 		
-		$sql = "SELECT * FROM patient WHERE patient_loginid = '$loginuser' AND patient_password = '$loginpass'";
+		$sql = "SELECT * FROM patient WHERE patient_loginid = '" . $loginuser . "' AND patient_password = '" . md5($loginpass) . "'";
 		$result = mysqli_query($conn, $sql);
 		$user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		
@@ -16,7 +15,8 @@
 			$_SESSION['login_patient'] = $loginuser;
 			header("location: patient_dashboard.php");
 		} else {
-			header("ID or Password is invalid");
+			//echo "ID or Password is invalid<br>";
+            echo alert("ID or Password is invalid");
 		}
 	}
 ?>
@@ -26,7 +26,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img src="images/logo.png" alt="Our dentistry logo">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <a href="login_page.php"><img src="images/logo.png" alt="Our dentistry logo"></a>
     <title>Login</title>
 	<style>
         img {
@@ -85,14 +86,15 @@
         }
     </style>
 </head>
-<body style="text-align:center;">
+<body>
     <h1>Login</h1>
     <form action="" method="post">
         <label for="userid">Patient ID:</label>
-        <input type="text" name="userid" id="userid" required><br><br>
+        <input type="text" name="userid" id="userid" placeholder="User ID"><br><br>
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br><br>
-        <input type="submit" value="Login">
+        <input type="password" name="password" id="password" placeholder="Password"><br><br>
+        <input type="submit" value="Login" onclick="login()">
     </form>
+    <script src="javascript/login.js"></script>
 </body>
 </html>
