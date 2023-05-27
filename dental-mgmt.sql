@@ -8,6 +8,7 @@ CREATE TABLE staff (
     staff_phone int(15) NOT NULL,
     staff_email varchar(255) DEFAULT NULL,
     staff_status int(1) NOT NULL,
+    staff_role int(1) NOT NULL,
     PRIMARY KEY(staff_id)
 );
 
@@ -37,10 +38,9 @@ ALTER TABLE staff AUTO_INCREMENT=10000;
 
 ALTER TABLE patient AUTO_INCREMENT=100;
 
-
 INSERT INTO staff VALUES
-('10001', 'S10001', '1234', 'Jamie_Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1');
+('10001', 'S10001', '81dc9bdb52d04dc20036dbd8313ed055', 'Jamie_Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1', '1');
 
 
 INSERT INTO patient VALUES
-('101', 'P101', '1234', 'John Holland', 'Male', ' 73, Jalan SS 15/5a, SS 15, 47500 Subang Jaya, Selangor', '0129801789', 'j_holland@gmail.com');
+('101', 'P101', '81dc9bdb52d04dc20036dbd8313ed055', 'John Holland', 'Male', ' 73, Jalan SS 15/5a, SS 15, 47500 Subang Jaya, Selangor', '0129801789', 'j_holland@gmail.com');
