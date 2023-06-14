@@ -1,67 +1,53 @@
 <?php
-// Example data - Replace with your actual data retrieval logic
-$appointments = [
-    [
-        'date' => '2023-06-10',
-        'time' => '09:00 AM',
-        'patient_name' => 'John Doe',
-        'doctor' => 'Dr. Smith',
-        'notes' => 'Regular check-up',
-    ],
-    [
-        'date' => '2023-06-12',
-        'time' => '02:30 PM',
-        'patient_name' => 'Jane Smith',
-        'doctor' => 'Dr. Johnson',
-        'notes' => 'Follow-up appointment',
-    ],
-    // Add more appointments as needed
-];
+    include ("setup.php");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Appointment Table</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    
 </head>
 <body>
     <h2>Appointment Table</h2>
     <table>
         <thead>
             <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Staff ID</th>
+                <th>Staff Name</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>Patient Name</th>
-                <th>Doctor</th>
-                <th>Notes</th>
+                <th>Reason</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($appointments as $appointment): ?>
-                <tr>
-                    <td><?= $appointment['date'] ?></td>
-                    <td><?= $appointment['time'] ?></td>
-                    <td><?= $appointment['patient_name'] ?></td>
-                    <td><?= $appointment['doctor'] ?></td>
-                    <td><?= $appointment['notes'] ?></td>
-                </tr>
-            <?php endforeach; ?>
+            <?php
+                $sqlRow = tmp_query("SELECT * FROM appointment ORDER BY appointment_id ASC")
+                while($dataRow = tmp_get_object($sqlRow)) {
+                    $patientID = $dataRow->patient_id;
+                    $patientName = $dataRow->patient_name;
+                    $staffID = $dataRow->staff_id;
+                    $staffName = $dataRow->staff_name;
+                    $date = $dataRow->date;
+                    $startTime = $dataRow->start_time;
+                    $endTime = $dataRow->end_time;
+                    $reason = $dataRow->reason;
+
+                    echo '<tr>
+                        <td>' . $patientID . '</td>
+                        <td>' . $patientName . '</td>
+                        <td>' . $staffID . '</td>
+                        <td>' . $staffName . '</td>
+                        <td>' . $date . '</td>
+                        <td>' . $startTime . '</td>
+                        <td>' . $endTime . '</td>
+                        <td>' . $reason . '</td>
+                    </tr>'
+                }
+            ?>
+            <?php endwhile ?>
         </tbody>
     </table>
 </body>
