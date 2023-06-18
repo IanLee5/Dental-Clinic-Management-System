@@ -9,9 +9,11 @@
   <title>Create New Appointment</title>
    <style>
 	body {
+		align: top;
+		margin: 0px;
 		font-family: Verdana, Arial sans-serif;
-        background-color: #f2f2f2;
-	}
+        	background-color: #f2f2f2;
+	     }
 			
 	h1   {
 		margin-top: 50px;
@@ -22,10 +24,6 @@
 		text-decoration: underline;
 		color: #333;
 	}
-	
-	body {align: top;
-		  margin: 0px;
-		 }
 	
 	label   {
 		display: block;
