@@ -36,11 +36,93 @@
   <meta name="description" content="Create appointment" />
   <meta name="keywords" content="create" />
   <meta name="author" content="Lim Kwangmin"  />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <title>Register new staff</title>
+  <style>
+	body {
+		font-family: Verdana, Arial sans-serif;
+        background-color: #f2f2f2;
+	}
+
+	h1   {
+		margin-top: 50px;
+		font-weight: bold;
+	}
+
+	h3   {
+		text-decoration: underline;
+		color: #333;
+	}
+
+	body {align: top;
+		  margin: 0px;
+		 }
+
+	label   {
+		display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+	}
+
+	legend   {
+			font-weight: bold;
+			font-family: Verdana, Arial sans-serif;
+			color: #666;
+			align: top;
+			margin: 0px;
+	}
+
+	img { 
+		height:150px; 
+		width:150px;
+	}
+
+	fieldset {
+		border: 3px solid #666;
+  		border-right: 3px solid #333;
+  		border-bottom: 3px solid #333;
+	}
+
+	 .container {
+            width: 300px;
+            margin-left: 50px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .menu {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background-color: #ccc;
+        }
+</style>
   </head>
   
   <body>
+  <img src="images/logo.png" alt="Our dentistry logo">
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
+        <h3 class="w3-bar-item"> Menu </h3> 
+            <a href="create_appointment.php" class="w3-bar-item w3-button">Create Appointment</a>
+            <a href="display_appointment.php" class="w3-bar-item w3-button">Display Appointment</a>
+            <a href="logout.php" class="w3-bar-item w3-button">Logout</a>
+    </div>
+	<div style="margin-left:12%">
   <header> 
 	<h1> Create new appointment</h1>
 	</header>	
