@@ -6,22 +6,75 @@
 <html>
 <head>
     <title>Appointment Table</title>
-    <!-- <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
+    <style>
+	body {
+		font-family: Verdana, Arial sans-serif;
+        background-color: #f2f2f2;
+	}
+			
+	h2   {
+		font-weight: bold;
+	}
+			
+	h3  {
+		text-decoration: underline;
+		color: #333;
+	}
+	
+	th  {
+		font-family: Verdana, Arial sans-serif;
+		color: #333;
+		}
+	
+	img { 
+		height:150px; 
+		width:150px;
+	}
+	
+	 .container {
+            width: 300px;
+            margin-left: 50px;
             background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
         }
-    </style> -->
+        
+        .menu {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .menu a:hover {
+            background-color: #ccc;
+        }
+		
+		body {align: top;
+			  margin: 0px;
+			 }
+		
+		table {border: 3px solid #333;
+			   padding: 0px;
+			   margin: 0px;
+			  }
+		
+		th {border: 2px solid #333;
+			padding: 0px;
+			margin: 0px;
+			  }
+			  
+		
+	</style>
 </head>
 <body>
     <h2>Appointment Table</h2>
