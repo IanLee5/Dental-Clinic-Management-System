@@ -9,9 +9,23 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		tmp_query("INSERT INTO appointment (
-			
+			patient_id,
+			patient_name,
+			staff_id,
+			staff_name,
+			appointment_date,
+			start_time,
+			end_time,
+			reason
 		) VALUES (
-			
+			'" . $_POST['patientID'] . "',
+			'" . $_POST['patientName'] . "',
+			'" . $_POST['staffID'] . "',
+			'" . $_POST['staffName'] . "',
+			'" . $_POST['appDate'] . "',
+			'" . $_POST['startTime'] . "',
+			'" . $_POST['endTime'] . "',
+			'" . $_POST['treatment'] . "'
 		)");
 	}
 ?>
@@ -30,6 +44,7 @@
   <header> 
 	<h1> Create new appointment</h1>
 	</header>	
+	<form action="" method="post">
 	<h3>Create new appointment</h3>
 	<fieldset>
 		<legend> Appointment for: </legend>
@@ -49,8 +64,8 @@
 			</select>
 			</p>
 			
-		<p><label for="patientname">Patient Name</label>
-			<input type="text" name="patientname" id="patientname" required="required"/>
+		<p><label for="patientName">Patient Name</label>
+			<input type="text" name="patientName" id="patientName" required="required"/>
 		</p>
 		
 		<p><label for="staffID">Staff ID</label>
@@ -67,15 +82,15 @@
 				?>
 			</select>
 			</p>
-		<p><label for="staffname">Staff Name</label>
-			<input type="text" name="staffname" id="staffname" required="required"/>
+		<p><label for="staffName">Staff Name</label>
+			<input type="text" name="staffName" id="staffName" required="required"/>
 		</p>
 	</fieldset>
 	
 	<fieldset>
 		<legend>Decide appointment Date and Time</legend>
-			<p><label for="AppDate">Appointment Date</label>
-			<input type="date" name="AppDate" id="AppDate" placeholder="dd-mm-yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" maxlength="10"/>
+			<p><label for="appDate">Appointment Date</label>
+			<input type="date" name="appDate" id="appDate" placeholder="dd-mm-yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" maxlength="10"/>
 			</p>
 		
 			<p><label for="time">Time</label>
@@ -89,10 +104,10 @@
 			<p><label for="treatment">Treatment</label>
 				<select name="treatment" id="treatment" required="required">
 					<option value="" id="none">Please Select </option>
-					<option value="Scl" id="Scl">Scaling</option>
-					<option value="Wht" id="Wht">Whitening</option>
-					<option value="Cvtf" id="Cvtf">Cavity Filling</option>
-					<option value="Br" id="Br">Braces</option>
+					<option value="Scaling" id="Scl">Scaling</option>
+					<option value="Whitening" id="Wht">Whitening</option>
+					<option value="Cavity Filling" id="Cvtf">Cavity Filling</option>
+					<option value="Braces" id="Br">Braces</option>
 			</select>
 			</p>		
 	</fieldset>
@@ -103,14 +118,14 @@
 <script>
 	function getPatient(str) {
     	if (str.length == 0) {
-        	document.getElementById("patientname").value = "";
+        	document.getElementById("patientName").value = "";
         	return;
     	} else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var myObj = JSON.parse(this.responseText);
-                document.getElementById("patientname").value = myObj[0];
+                document.getElementById("patientName").value = myObj[0];
             }
         };
 
@@ -122,14 +137,14 @@
 
 	function getStaff(str) {
     	if (str.length == 0) {
-        	document.getElementById("staffname").value = "";
+        	document.getElementById("staffName").value = "";
         	return;
     	} else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var myObj = JSON.parse(this.responseText);
-                document.getElementById("staffname").value = myObj[0];
+                document.getElementById("staffName").value = myObj[0];
             }
         };
 

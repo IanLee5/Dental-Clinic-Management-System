@@ -53,14 +53,12 @@
 <body>
     <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
         <h3 class="w3-bar-item"> Menu </h3> 
-            <a href="create_appointment.php" class="w3-bar-item w3-button">Create Appointment</a>
-            <a href="display_appointment.php" class="w3-bar-item w3-button">Display Appointment</a>
+            <a href="patient_create_appointment.php" class="w3-bar-item w3-button">Create Appointment</a>
+            <a href="patient_display_appointments.php" class="w3-bar-item w3-button">Display Appointment</a>
             <a href="logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
 	<div style="margin-left:12%">
     <h1>Welcome back!</h1>
-    <p>Test</p>
-	<h2><a href = "logout.php">Sign Out</a></h2>
-    </form>
+    <p>Upcoming Appointments</p>
 </body>
 </html>

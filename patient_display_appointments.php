@@ -40,7 +40,8 @@
         </thead>
         <tbody>
             <?php
-                $sqlRow = tmp_query("SELECT * FROM appointment ORDER BY appointment_id ASC");
+                $id = trim($_SESSION['login_patient'], "P");
+                $sqlRow = tmp_query("SELECT * FROM appointment WHERE patient_id = '" . $id . "' ORDER BY appointment_id ASC");
                 while($dataRow = tmp_get_object($sqlRow)) {
                     $patientID = $dataRow->patient_id;
                     $patientName = $dataRow->patient_name;

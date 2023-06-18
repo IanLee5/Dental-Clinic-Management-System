@@ -28,19 +28,25 @@ CREATE TABLE patient (
 
 CREATE TABLE appointment (
 	patient_id int(20) NOT NULL,
+    patient_name varchar(50) NOT NULL,
+    staff_id int(20) NOT NULL,
+    staff_name varchar(50) NOT NULL,
     appointment_date DATE NOT NULL,
-    appointment_time TIME NOT NULL
+    start_time char(10) NOT NULL,
+    end_time char(10) NOT NULL,
+    reason varchar(100) NOT NULL
 );
 
 
 ALTER TABLE staff AUTO_INCREMENT=10000;
 
-
 ALTER TABLE patient AUTO_INCREMENT=100;
 
 INSERT INTO staff VALUES
-('10001', 'S10001', '81dc9bdb52d04dc20036dbd8313ed055', 'Jamie_Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1', '1');
-
+('10001', 'S10001', '81dc9bdb52d04dc20036dbd8313ed055', 'Jamie Fallon', 'Male', '0192405195', 'jamie@gmail.com', '1', '1');
 
 INSERT INTO patient VALUES
 ('101', 'P101', '81dc9bdb52d04dc20036dbd8313ed055', 'John Holland', 'Male', ' 73, Jalan SS 15/5a, SS 15, 47500 Subang Jaya, Selangor', '0129801789', 'j_holland@gmail.com');
+
+INSERT INTO appointment VALUES
+('P101','','S10001','2023-05-15','2023-05-15','','','')

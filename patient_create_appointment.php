@@ -8,10 +8,24 @@
 	$all_s = mysqli_query($conn, $s_sql);
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		tmp_query("INSERT INTO staff (
-			
+		tmp_query("INSERT INTO appointment (
+			patient_id,
+			patient_name,
+			staff_id,
+			staff_name,
+			appointment_date,
+			start_time,
+			end_time,
+			reason
 		) VALUES (
-			
+			'" . $_POST['patientID'] . "',
+			'" . $_POST['patientName'] . "',
+			'" . $_POST['staffID'] . "',
+			'" . $_POST['staffName'] . "',
+			'" . $_POST['appDate'] . "',
+			'" . $_POST['startTime'] . "',
+			'" . $_POST['endTime'] . "',
+			'" . $_POST['treatment'] . "'
 		)");
 	}
 ?>
@@ -35,7 +49,7 @@
 		<legend> Appointment for: </legend>
 		<p><label for="patientID">Patient ID</label>
         <?php
-			echo '<input type="text" name="patientID" id="patientID" value="' . ($_SESSION['login_patient']). '" onchange="getName(this.value)">'
+			echo '<input type="text" name="patientID" id="patientID" value="' . ($_SESSION['login_patient']) . '" onchange="getName(this.value)">'
         ?>
             </input>
 		</p>
